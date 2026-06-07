@@ -35,6 +35,10 @@ The screenshots are saved in [docs/screenshots](docs/screenshots).
 
 ![API keys screen](docs/screenshots/05-api-keys.png)
 
+### Settings
+
+![Settings screen](docs/screenshots/06-settings.png)
+
 ## Requirement Coverage
 
 | Requirement | Status | Evidence |
@@ -167,7 +171,7 @@ These checks were run on 7 June 2026.
 | Frontend type-check | Passed: `npm run type-check` |
 | Frontend production build | Passed: `npm run build` |
 | Backend test discovery | Passed: `38 tests collected` |
-| Screenshot capture | Passed: five PNG screenshots saved in `docs/screenshots` |
+| Screenshot capture | Passed: six PNG screenshots saved in `docs/screenshots` |
 
 ### Backend Test Note
 
