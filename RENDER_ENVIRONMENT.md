@@ -2,6 +2,8 @@
 
 Use this checklist when filling **Render -> Environment Variables** for the backend web service.
 
+For where each URL comes from and where it is reused later, see [DEPLOYMENT_URLS_CHECKLIST.md](DEPLOYMENT_URLS_CHECKLIST.md).
+
 Do not commit real passwords, database URLs with passwords, Redis URLs, or secret keys into GitHub. Paste real values only into the Render dashboard.
 
 ## Service Settings

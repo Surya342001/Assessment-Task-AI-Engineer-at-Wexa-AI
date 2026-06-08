@@ -4,6 +4,8 @@ This setup gives reviewers one durable frontend URL while the frontend proxies `
 
 For the exact Render environment variables checklist, see [RENDER_ENVIRONMENT.md](RENDER_ENVIRONMENT.md).
 
+For where to get each deployment URL and where to paste it, see [DEPLOYMENT_URLS_CHECKLIST.md](DEPLOYMENT_URLS_CHECKLIST.md).
+
 ## 1. Create Cloud Services
 
 1. Create a Neon PostgreSQL database.
