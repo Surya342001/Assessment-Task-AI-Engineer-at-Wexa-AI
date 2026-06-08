@@ -2,6 +2,8 @@
 
 This setup gives reviewers one durable frontend URL while the frontend proxies `/api/*` to the hosted FastAPI backend.
 
+For the exact Render environment variables checklist, see [RENDER_ENVIRONMENT.md](RENDER_ENVIRONMENT.md).
+
 ## 1. Create Cloud Services
 
 1. Create a Neon PostgreSQL database.
