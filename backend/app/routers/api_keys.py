@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 import uuid
 from typing import Annotated
@@ -15,6 +16,7 @@ from app.services.api_key_service import APIKeyService
 router = APIRouter(prefix="/orgs/{org_id}/api-keys", tags=["API Keys"])
 
 
+@router.get("", response_model=list[APIKeyResponse], include_in_schema=False)
 @router.get("/", response_model=list[APIKeyResponse])
 async def list_api_keys(
     org_id: uuid.UUID,
@@ -28,6 +30,7 @@ async def list_api_keys(
         raise to_http_exception(e)
 
 
+@router.post("", response_model=APIKeyCreatedResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
 @router.post("/", response_model=APIKeyCreatedResponse, status_code=status.HTTP_201_CREATED)
 async def create_api_key(
     org_id: uuid.UUID,

@@ -12,7 +12,12 @@ import type {
   Widget,
 } from '@/types';
 
-const API_ORIGIN = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '');
+const configuredApiOrigin = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '');
+const isBrowserHttpsTunnel =
+  typeof window !== 'undefined' &&
+  window.location.protocol === 'https:' &&
+  /^https?:\/\/localhost(?::\d+)?$/.test(configuredApiOrigin);
+const API_ORIGIN = isBrowserHttpsTunnel ? '' : configuredApiOrigin;
 const API_PREFIX = `${API_ORIGIN}/api`;
 
 export const apiClient = axios.create({

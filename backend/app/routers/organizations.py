@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 import uuid
 from typing import Annotated
@@ -23,6 +24,7 @@ from app.services.organization_service import OrganizationService
 router = APIRouter(prefix="/orgs", tags=["Organizations"])
 
 
+@router.post("", response_model=OrganizationResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
 @router.post("/", response_model=OrganizationResponse, status_code=status.HTTP_201_CREATED)
 async def create_organization(
     data: OrganizationCreate,

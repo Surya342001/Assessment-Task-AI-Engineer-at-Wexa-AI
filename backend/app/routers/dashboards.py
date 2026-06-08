@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 import uuid
 from typing import Annotated
@@ -24,6 +25,7 @@ router = APIRouter(prefix="/orgs/{org_id}/dashboards", tags=["Dashboards"])
 public_router = APIRouter(prefix="/public/dashboards", tags=["Public Dashboards"])
 
 
+@router.get("", response_model=list[DashboardResponse], include_in_schema=False)
 @router.get("/", response_model=list[DashboardResponse])
 async def list_dashboards(
     org_id: uuid.UUID,
@@ -37,6 +39,7 @@ async def list_dashboards(
         raise to_http_exception(e)
 
 
+@router.post("", response_model=DashboardResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
 @router.post("/", response_model=DashboardResponse, status_code=status.HTTP_201_CREATED)
 async def create_dashboard(
     org_id: uuid.UUID,

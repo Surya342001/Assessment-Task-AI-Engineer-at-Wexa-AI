@@ -1,4 +1,3 @@
-
 import uuid
 from typing import Annotated
 
@@ -60,6 +59,7 @@ async def ingest_batch_events(
         raise to_http_exception(e)
 
 
+@router.get("", response_model=list[EventResponse], include_in_schema=False)
 @router.get("/", response_model=list[EventResponse])
 async def list_events(
     org_id: uuid.UUID,

@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 import uuid
 from typing import Annotated
@@ -21,6 +22,7 @@ from app.services.alert_service import AlertService
 router = APIRouter(prefix="/orgs/{org_id}/alerts", tags=["Alerts"])
 
 
+@router.get("", response_model=list[AlertResponse], include_in_schema=False)
 @router.get("/", response_model=list[AlertResponse])
 async def list_alerts(
     org_id: uuid.UUID,
@@ -34,6 +36,7 @@ async def list_alerts(
         raise to_http_exception(e)
 
 
+@router.post("", response_model=AlertResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
 @router.post("/", response_model=AlertResponse, status_code=status.HTTP_201_CREATED)
 async def create_alert(
     org_id: uuid.UUID,
