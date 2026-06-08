@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 from functools import lru_cache
 from typing import Annotated
@@ -56,6 +57,16 @@ class Settings(BaseSettings):
     @property
     def allowed_origins_list(self) -> list[str]:
         return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",")]
+
+    @field_validator("DATABASE_URL")
+    @classmethod
+    def normalize_database_url(cls, value: str) -> str:
+        """Accept common cloud Postgres URLs and convert them for SQLAlchemy asyncpg."""
+        if value.startswith("postgres://"):
+            value = value.replace("postgres://", "postgresql://", 1)
+        if value.startswith("postgresql://"):
+            value = value.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return value.replace("sslmode=require", "ssl=require")
 
     @property
     def is_development(self) -> bool:

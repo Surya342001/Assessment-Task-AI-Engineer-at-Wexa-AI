@@ -12,10 +12,11 @@ import type {
   Widget,
 } from '@/types';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_ORIGIN = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '');
+const API_PREFIX = `${API_ORIGIN}/api`;
 
 export const apiClient = axios.create({
-  baseURL: `${BASE_URL}/api`,
+  baseURL: API_PREFIX,
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true, // For refresh token cookie
 });
@@ -45,7 +46,7 @@ apiClient.interceptors.response.use(
       original._retry = true;
       try {
         const { data } = await axios.post<TokenResponse>(
-          `${BASE_URL}/api/auth/refresh`,
+          `${API_PREFIX}/auth/refresh`,
           {},
           { withCredentials: true }
         );

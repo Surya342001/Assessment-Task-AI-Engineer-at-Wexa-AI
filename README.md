@@ -95,6 +95,8 @@ analytics-platform/
 
 ## Local Run Instructions
 
+For a durable hosted URL using Vercel, Render, Neon PostgreSQL, and Upstash Redis, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ### Backend
 
 ```bash
